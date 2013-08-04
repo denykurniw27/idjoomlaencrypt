@@ -1,0 +1,35 @@
+#!usr/bin/perl
+use Digest::MD5 qw(md5 md5_hex md5_base64);
+
+if(!$ARGV[2])
+{
+print (" ________________________________________________\n");
+print ("|   Joomla Encrypt Password - We Love Indonesia   |\n");
+print ("| Use: idjoomlaencrypt.pl [KAMUS] [HASH] [SALT]  |\n");
+print ("|          re-coded by denykurniw27              |\n");
+print ("|________________________________________________|\n");
+print ("Contoh: idjoomlaencrypt.pl wordlist.txt 55c484205a63b5083d51a6ebc56df702c oSkr56VbNT39kt4jKBw7VaMsgjce6zi \n");
+exit(0);
+}
+$kamusnya = $ARGV[0];
+$hash = $ARGV[1];
+$salt = $ARGV[2];
+$galau = "yah galau banget gak ketemu\n";
+
+open(KAMUS,"<".$kamusnya) || die "[-] Wordlist tidak ditemukan\n";
+print "[!] Sedang mencari password...!\n";
+foreach $passwd(<KAMUS>)
+		{
+$passwd=~s/\s|\n//;
+chomp($passwd);
+$ketemu = md5_hex ($passwd.$salt);
+if ($ketemu eq $hash)
+	{
+print "[+] Passwod ditemukan !: $passwd\n";
+close(KAMUS);
+exit(0);
+	}
+		}
+print "[-] Password tidak ditemukan!: $galau\n";
+close(KAMUS);
+exit (0); 
