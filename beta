@@ -4,7 +4,7 @@ use Digest::MD5 qw(md5 md5_hex md5_base64);
 if(!$ARGV[2])
 {
 print (" ________________________________________________\n");
-print ("|   Joomla Encrypt Password - We Love Indonesia   |\n");
+print ("|   Joomla Encrypt Password - We Love Indonesia  |\n");
 print ("| Use: idjoomlaencrypt.pl [KAMUS] [HASH] [SALT]  |\n");
 print ("|          re-coded by denykurniw27              |\n");
 print ("|________________________________________________|\n");
